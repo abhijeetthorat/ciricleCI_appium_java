@@ -60,6 +60,8 @@ jobs:
             - emulator -avd custom-android22-googleapis -no-audio:
               background: true
               parallel: true
+            - appium:
+              background: true
       # run tests!
       - run: mvn test
 
