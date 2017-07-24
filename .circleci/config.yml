@@ -45,10 +45,11 @@ jobs:
           name: Install appium server
           command: |
             sudo npm update
+            sudo npm install node
             sudo npm install appium
             sudo npm install wd
+            sudo npm install -g appium-doctor
             appium &
-            which appium
       - save_cache:
           paths:
             - ~/.m2
