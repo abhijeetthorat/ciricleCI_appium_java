@@ -56,7 +56,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
             
       # run tests!
-      - run:   /usr/bin appium &       
+      - run:   /usr/bin/appium &       
                mvn test
 
       - store_artifacts:
