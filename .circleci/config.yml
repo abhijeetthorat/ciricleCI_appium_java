@@ -54,7 +54,7 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
       - run:
           command:
-            - appium &
+            - appium
               background: true
             - emulator -avd custom-android22-googleapis -no-audio:
               background: true
