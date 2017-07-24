@@ -37,17 +37,10 @@ jobs:
       - run:
           name: Install appium server
           command: |
-            brew install node
-            npm install -g appium
-            npm install wd
+            sudo brew install node
+            sudo npm install -g appium
+            sudo npm install wd
             appium &
-
-     - run:
-      pre:
-         - emulator -avd circleci-android24 -no-window:
-           background: true
-           parallel: true
-         - circle-android wait-for-boot
 
       - save_cache:
           paths:
