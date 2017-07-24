@@ -45,6 +45,7 @@ jobs:
           name: Install appium server
           command: |
             sudo npm install appium
+            appium@1.6.5
       - save_cache:
           paths:
             - ~/.m2
