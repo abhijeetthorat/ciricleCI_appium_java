@@ -44,8 +44,8 @@ jobs:
       - run:
           name: Install appium server
           command: |
-            sudo npm update -g
-            npm install appium
+            sudo npm update
+            sudo npm install appium
             sudo npm install wd
             appium &
       - save_cache:
@@ -53,6 +53,13 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
+    - test:
+          override:
+            - echo no | android create avd -n custom-android22-googleapis -t "android-22" --abi default/armeabi-v7a -c 1024M
+            - android list avd
+            - emulator -avd custom-android22-googleapis -no-audio:
+              background: true
+              parallel: true
       # run tests!
       - run: mvn test
 
