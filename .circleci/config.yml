@@ -52,13 +52,12 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-test:
-  pre:
-    - appium:
-        background: true
             
       # run tests!
-      - run: mvn test
+      - run: 
+      - appium:
+               background: true        
+               mvn test
 
       - store_artifacts:
           path: target/surefire-reports
