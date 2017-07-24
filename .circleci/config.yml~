@@ -43,6 +43,7 @@ jobs:
             export MANPATH="/home/circleci/.linuxbrew/share/man:$MANPATH"
             export INFOPATH="/home/circleci/.linuxbrew/info:$INFOPATH"
             brew install node
+            sudo apt-get install build-essential
             npm install -g appium
             npm install wd
             appium &
