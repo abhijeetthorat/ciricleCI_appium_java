@@ -40,6 +40,7 @@ jobs:
             sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
             curl -sL https://deb.nodesource.com/setup | sudo bash -
             sudo apt-get install nodejs
+            sudo npm install npm --global
             npm -v
       - run:
           name: Install appium server
