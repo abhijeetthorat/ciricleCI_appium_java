@@ -39,6 +39,8 @@ jobs:
           command: |
             curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
             sudo apt-get install -y nodejs
+            sudo npm install -g express
+            sudo npm init -y
             sudo npm install -g appium
             sudo npm install wd
             appium &
