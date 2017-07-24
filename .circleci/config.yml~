@@ -42,11 +42,11 @@ jobs:
             npm install wd
             appium &
 
-      test:
+     - run:
       pre:
          - emulator -avd circleci-android24 -no-window:
-         background: true
-         parallel: true
+           background: true
+           parallel: true
          - circle-android wait-for-boot
 
       - save_cache:
