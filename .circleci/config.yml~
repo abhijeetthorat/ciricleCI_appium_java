@@ -39,7 +39,8 @@ jobs:
           command: |
             sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
             sudo apt install linuxbrew-wrapper
-            brew install node
+            brew update >/dev/null
+            brew install node >/dev/null
             npm install -g appium
             npm install wd
             appium &
