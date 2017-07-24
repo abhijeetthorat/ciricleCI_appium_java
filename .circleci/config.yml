@@ -37,15 +37,15 @@ jobs:
       - run:
           name: Install appiums server
           command: |
-                 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-                 sudo apt-get install -y nodejs
-                 sudo apt-get install -y build-essential
-                 sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+                 sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+                 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)" </dev/null
+                 brew update
+                 brew install node
+                 brew link node
       - run:
           name: Install appium server
           command: |
             sudo npm install appium
-            appium@1.6.5
       - save_cache:
           paths:
             - ~/.m2
