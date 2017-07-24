@@ -49,14 +49,14 @@ jobs:
             sudo npm install appium
             sudo npm install wd
             sudo npm install -g appium-doctor
-            appium &
+            /home/circleci/ciricleCI_appium_java/node_modules/appium/node_modules appium &
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
             
       # run tests!
-      - run:   /usr/bin/appium &       
+      - run:     
                mvn test
 
       - store_artifacts:
