@@ -52,15 +52,11 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-      test :
-          command:
-            - appium
-              background: true
-            - emulator -avd custom-android22-googleapis -no-audio:
-              background: true
-              parallel: true
-          
-      steps:  
+test:
+  pre:
+    - appium:
+        background: true
+            
       # run tests!
       - run: mvn test
 
