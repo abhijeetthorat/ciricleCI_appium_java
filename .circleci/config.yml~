@@ -52,16 +52,14 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-        
-    - test:
-          override:
-            - echo no | android create avd -n custom-android22-googleapis -t "android-22" --abi default/armeabi-v7a -c 1024M
-            - android list avd
+      - run:
+          command:
+            - appium &
+              background: true
             - emulator -avd custom-android22-googleapis -no-audio:
               background: true
               parallel: true
-            - appium:
-              background: true
+            
       # run tests!
       - run: mvn test
 
