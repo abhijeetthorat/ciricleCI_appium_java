@@ -38,8 +38,8 @@ jobs:
           name: Install appium server
           command: |
             sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-            sudo apt-get install ruby-full
-            git clone https://github.com/Homebrew/linuxbrew.git ~/.linuxbrew
+            curl -sL https://deb.nodesource.com/setup | sudo bash -
+            sudo apt-get install nodejs
             brew install node
             sudo npm install -g appium
             sudo npm install wd
