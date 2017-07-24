@@ -35,12 +35,15 @@ jobs:
       - run: mvn dependency:go-offline
 
       - run:
-          name: Install appium server
+          name: Install Node server
           command: |
             sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
             curl -sL https://deb.nodesource.com/setup | sudo bash -
             sudo apt-get install nodejs
-            brew install node
+            npm -v
+      - run:
+          name: Install appium server
+          command: |
             sudo npm install -g appium
             sudo npm install wd
             appium &
