@@ -44,6 +44,8 @@ jobs:
           name: Install appium server
           command: |
             npm install -g appium
+            npm install wd
+            appium &
       - save_cache:
           paths:
             - ~/.m2

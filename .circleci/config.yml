@@ -43,8 +43,8 @@ jobs:
       - run:
           name: Install appium server
           command: |
-            npm install -g appium
-            npm install wd
+            sudo npm install -g appium
+            sudo npm install wd
             appium &
       - save_cache:
           paths:
