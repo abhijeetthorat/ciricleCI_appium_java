@@ -38,14 +38,17 @@ jobs:
           name: Install appiums server
           command: |
                  sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-                 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbrew/go/install)"
+                 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/linuxbrew/go/install)" </dev/null
+                 export PATH="/home/circleci/.linuxbrew/bin:$PATH"
+                 export MANPATH="/home/circleci/.linuxbrew/share/man:$MANPATH"
+                 export INFOPATH="/home/circleci/.linuxbrew/info:$INFOPATH"
+                 brew update
                  brew install node
+                 sudo apt-get install build-essential
       - run:
           name: Install appium server
           command: |
-            sudo npm install -g express-generator
-            sudo npm install appium-chromedriver --chromedriver_version="2.16"
-            sudo npm install -g appium@beta
+            sudo npm install -g appium
             sudo npm install wd
             appium &
       - save_cache:
