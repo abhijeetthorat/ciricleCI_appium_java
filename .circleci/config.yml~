@@ -43,6 +43,7 @@ jobs:
       - run:
           name: Install appium server
           command: |
+            npm install appium-chromedriver --chromedriver_version="2.16"
             sudo npm install -g appium@beta
             sudo npm install wd
             appium &
