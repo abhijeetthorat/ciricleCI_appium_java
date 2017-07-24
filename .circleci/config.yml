@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/circleCiTesting
+    working_directory: ~/ciricleCI_appium_java
 
     environment:
       # Customize the JVM maximum heap limit
@@ -37,17 +37,16 @@ jobs:
       - run:
           name: Install appium server
           command: |
+            sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+            sudo apt-get install build-essential
+            ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)" </dev/null
+            export PATH="/home/circleci/.linuxbrew/bin:$PATH"
+            export MANPATH="/home/circleci/.linuxbrew/share/man:$MANPATH"
+            export INFOPATH="/home/circleci/.linuxbrew/info:$INFOPATH"
             brew install node
             npm install -g appium
             npm install wd
             appium &
-
-      test:
-      pre:
-         - emulator -avd circleci-android24 -no-window:
-         background: true
-         parallel: true
-         - circle-android wait-for-boot
 
       - save_cache:
           paths:
