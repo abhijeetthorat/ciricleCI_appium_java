@@ -48,7 +48,7 @@ jobs:
             sudo npm install node
             sudo npm install appium
             sudo npm install wd
-            npm install -g appium-doctor
+            sudo npm install -g appium-doctor
             appium &
       - save_cache:
           paths:
