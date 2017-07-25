@@ -40,6 +40,7 @@ jobs:
           command: |
             sudo apt-get install rubygems
             sudo gem install bundler
+            sudo apt-get install npm
             sudo npm install -g npm@latest
       - run:
           name: install-npm-wee
