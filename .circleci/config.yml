@@ -8,8 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-      - image: circleci/ruby
-      - image: circleci/node
+      - image: circleci/ruby:2.4-node
+      - image: circleci/node:7.10
       - image: mongo:3.4.4
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
