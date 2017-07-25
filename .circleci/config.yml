@@ -54,10 +54,10 @@ jobs:
         
       # run tests!
       - run:
-        name: Starting tests
-        command: |
-        appium &
-        mvn test
+        name: Install appium server
+          command: |
+            appium
+            mvn test
 
       - store_artifacts:
           path: target/surefire-reports
