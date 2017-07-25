@@ -20,8 +20,11 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Install Appium
+          command: npm install -g appium && npm install wd
+      - run:
           name: test
-          command: npm test
+          command: mvn test
       - run:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
