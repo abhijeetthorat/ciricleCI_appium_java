@@ -54,7 +54,7 @@ jobs:
           command: appium &
       - run:
           name: Which appium server
-          command: which appium
+          command: locate appium
 
       # run tests!
       - run: mvn test
