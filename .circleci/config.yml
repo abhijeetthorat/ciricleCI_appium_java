@@ -8,7 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-      - image: circleci/node
+      - image: circleci/node:4.8.2
+      - image: circleci/ruby:2.4.1-node
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -35,16 +36,20 @@ jobs:
       - run: mvn dependency:go-offline
 
       - run:
-          name: Install appiums server
-          command: |
-                 sudo apt-get install build-essential curl git m4 ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-                 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)" </dev/null
-                 brew install node
-                 brew link node
+          name: update-npm
+          command: sudo npm install -g npm@latest
+      - run:
+          name: install-npm-wee
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       - run:
           name: Install appium server
           command: |
             sudo npm install appium
+            appium &
       - save_cache:
           paths:
             - ~/.m2
