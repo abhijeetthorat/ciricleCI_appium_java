@@ -38,8 +38,10 @@ jobs:
       - run:
           name: update-npm
           command: |
-            gem install bundler
-            npm install -g npm@latest
+            sudo apt-get install rubygems
+            sudo apt-get install libgemplugin-ruby
+            sudo gem install bundler
+            sudo npm install -g npm@latest
       - run:
           name: install-npm-wee
           command: npm install
