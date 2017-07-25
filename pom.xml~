@@ -204,21 +204,6 @@
 		    <artifactId>ruby-maven-plugin</artifactId>
 		    <version>0.1</version>
 		</dependency>
-                <!-- https://mvnrepository.com/artifact/org.webjars/npm -->
-<dependency>
-    <groupId>org.webjars</groupId>
-    <artifactId>npm</artifactId>
-    <version>4.2.0</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/io.airlift/node -->
-<dependency>
-    <groupId>io.airlift</groupId>
-    <artifactId>node</artifactId>
-    <version>0.148</version>
-</dependency>
-
-
-
 
 
 	</dependencies>
