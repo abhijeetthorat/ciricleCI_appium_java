@@ -8,8 +8,9 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-      - image: circleci/node:4.8.2
       - image: circleci/ruby:2.4.1-node
+      - image: circleci/node:4.8.2
+      - image: mongo:3.4.4
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -38,10 +39,7 @@ jobs:
       - run:
           name: update-npm
           command: |
-            sudo apt-get install rubygems
-            sudo gem install bundler
-            sudo apt-get install npm
-            sudo npm install -g npm@latest
+            'sudo npm install -g npm@latest'
       - run:
           name: install-npm-wee
           command: npm install
