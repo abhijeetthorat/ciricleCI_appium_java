@@ -1,39 +1,26 @@
-# Java Maven CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-java/ for more details
-#
 version: 2
 jobs:
   build:
-working_directory: ~/mern-starter
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
-      - image: circleci/node:4.8.2
-      - image: mongo:3.4.4
-   environment:
-      # Customize the JVM maximum heap limit
-      MAVEN_OPTS: -Xmx3200m
-      ANDROID_HOME: /usr/local/android-sdk-linux
     
+    working_directory: ~/ciricleCI_appium_java
+
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+
     steps:
+
       - checkout
 
-      # Download and cache dependencies
-
       - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
+          key: ciricleCI_appium_java-{{ checksum "pom.xml" }}
+      
       - run: mvn dependency:go-offline
-
+      
       - save_cache:
           paths:
             - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
-            
+          key: ciricleCI_appium_java-{{ checksum "pom.xml" }}
+      
       # run tests!
       - run:     
                mvn test
@@ -43,5 +30,4 @@ working_directory: ~/mern-starter
           destination: tr1
       - store_test_results:
           path: target/surefire-reports
-
 
