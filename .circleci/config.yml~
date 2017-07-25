@@ -43,20 +43,17 @@ jobs:
             sudo npm update -g
             sudo npm install appium
             sudo npm install wd
-      - run:
-          name: Start appium server
-          command: appium &
 
       - save_cache:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
-      # run tests!
       - run:
-        name: Install appium server
-          command: |
-            sudo npm update -g
+          name: Start appium server
+          command: appium &
+      # run tests!
+      - run: mvn test
 
       - store_artifacts:
           path: target/surefire-reports
