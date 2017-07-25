@@ -21,7 +21,13 @@ jobs:
             - ./node_modules
       - run:
           name: Install Appium
-          command: npm install -g appium && npm install wd
+          command: npm install appium
+      - run:
+          name: Install Appium WD
+          command: npm install wd
+      - run:
+          name: Install Appium WD
+          command: npm install wd
       - run:
           name: test
           command: mvn test
