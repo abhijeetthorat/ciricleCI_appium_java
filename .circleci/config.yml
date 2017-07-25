@@ -39,7 +39,6 @@ jobs:
           name: update-npm
           command: |
             sudo apt-get install rubygems
-            sudo apt-get install libgemplugin-ruby
             sudo gem install bundler
             sudo npm install -g npm@latest
       - run:
