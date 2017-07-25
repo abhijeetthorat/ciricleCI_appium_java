@@ -37,7 +37,9 @@ jobs:
 
       - run:
           name: update-npm
-          command: sudo npm install -g npm@latest
+          command: |
+            gem install bundler
+            npm install -g npm@latest
       - run:
           name: install-npm-wee
           command: npm install
