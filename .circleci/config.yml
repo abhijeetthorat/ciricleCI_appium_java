@@ -13,9 +13,11 @@ jobs:
 
       - checkout
 
-      - restore_cache: |
+      - restore_cache:
           key: ciricleCI_appium_java-{{ checksum "pom.xml" }}
+      
       - run: mvn dependency:go-offline
+      
       - save_cache:
           paths:
             - ~/.m2
@@ -23,9 +25,15 @@ jobs:
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm-wee
           command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       
       # run tests!
       - run:     
