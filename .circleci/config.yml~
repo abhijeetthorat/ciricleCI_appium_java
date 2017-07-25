@@ -22,21 +22,15 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      # Restore bundle cache
-      - type: cache-restore
-        key: rails-demo-{{ checksum "Gemfile.lock" }}
-
-      # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
-
-      # Store bundle cache
-      - type: cache-save
-        key: rails-demo-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+      -run: 
+          name: install appium
+          command: |
+                npm install -g appium
+                npm install wd
+                appium & 
       - run:
           name: test
-          command: mvn package
+          command: mvn test
       - run:
           name: code-coverage
           command: './node_modules/.bin/nyc report --reporter=text-lcov'
