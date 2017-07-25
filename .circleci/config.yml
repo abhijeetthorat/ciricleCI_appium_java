@@ -7,6 +7,13 @@ jobs:
       - image: mongo:3.4.4
     steps:
       - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "pom.xml" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: mvn dependency:go-offline
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
@@ -28,17 +35,17 @@ jobs:
       - run:
           name: Start Appium
           command: appium &
-      - run:
-          name: test
-          command: mvn test
-      - run:
-          name: code-coverage
-          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+            
+      # run tests!
+      - run:     
+               mvn test
+
       - store_artifacts:
-          path: test-results.xml
-          prefix: tests
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
+          path: target/surefire-reports
+          destination: tr1
       - store_test_results:
-          path: test-results.xml
+          path: target/surefire-reports
